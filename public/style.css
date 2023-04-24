@@ -1,0 +1,381 @@
+:root {
+    --bg-color: #fff;
+    --border-color: #e2e2e2;
+    --text-color: #151515;
+    --fa-white: #fafafa;
+    --grey-72: #727272;
+    --blue-color: #0371f0;
+    --xxxx: 3.5rem;
+    --xxx: 3rem;
+    --xx: 2.5rem;
+    --x: 2rem;
+    --l: 1.5rem;
+    --m: 1rem;
+    --s: .9rem;
+    --xs: .8rem;
+    --xxs: .7rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Carlito';
+    font-size: var(--l);
+    color: var(--text-color);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: var(--xxxx);
+}
+
+section {
+    width: 90vw;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.grid {
+    display: grid;
+    box-sizing: border-box;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px var(--m);
+    font-size: var(--m);
+    border-radius: calc(var(--xxs) / 2);
+    background-color: var(--blue-color);
+    color: var(--bg-color);
+    transition: .3s;
+    opacity: .95;
+    width: max-content;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.button:hover {
+    transform: scale(1.02);
+    opacity: 1;
+}
+
+/* header-footer */
+header,
+footer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--m);
+}
+
+header {
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    padding: var(--l);
+}
+
+.header__menu {
+    display: flex;
+    gap: var(--m);
+}
+
+.header__menu a:hover {
+    text-decoration: underline;
+}
+
+/* header-footer */
+
+.welcome__container {
+    grid-template-columns: 1fr max-content;
+    gap: var(--l);
+}
+
+.welcome__explain {
+    place-self: center;
+}
+
+.welcome__img {
+    place-self: center;
+    width: 700px;
+}
+
+.welcome__button {
+    margin-top: var(--s);
+    font-size: var(--l);
+}
+
+/* opening */
+
+/* guide */
+.guide__section {
+    text-align: center;
+    background-color: var(--fa-white);
+    width: 100%;
+    padding: var(--xx) 5vw;
+    box-sizing: border-box;
+    color: var(--grey-72);
+}
+
+/* guide */
+
+/* guide */
+.data {
+    min-height: 100vh;
+}
+
+.data__container {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: var(--l);
+}
+
+.data__card {
+    width: 253px;
+    box-sizing: border-box;
+    padding: var(--m);
+    border-radius: calc(var(--xs) / 2);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+.data__value p {
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.data__value.x {
+    margin-top: var(--xs);
+    padding: 3px 5px;
+    border: 1px solid var(--border-color);
+    font-size: var(--m);
+    border-radius: 7px;
+    background-color: var(--fa-white);
+    color: var(--grey-72);
+}
+
+.data__value.x span {
+    font-size: var(--xs);
+}
+
+.data__button {
+    margin-bottom: var(--m);
+}
+
+.data__action {
+    margin-top: var(--m);
+    display: flex;
+    justify-content: space-between;
+}
+
+.data__edit {
+    background-color: #04be83;
+}
+
+.data__delete {
+    background-color: #f00342;
+}
+
+/* guide */
+
+/* guide */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #15151538;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal__container {
+    width: 77%;
+    height: 77%;
+    margin: auto;
+    background-color: var(--bg-color);
+    border-radius: var(--x);
+    padding: var(--xx);
+    box-sizing: border-box;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.modal__container h2 {
+    text-align: center;
+}
+
+.modal__close {
+    float: right;
+    cursor: pointer;
+    width: var(--xx);
+    height: var(--xx);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--border-color);
+    border-radius: 50%;
+    opacity: .9;
+    font-weight: bold;
+}
+
+.modal__close:hover {
+    opacity: 1;
+}
+
+.labin {
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--xxs)) var(--xxs);
+    border-radius: var(--xs);
+    border: 1px solid var(--border-color);
+    margin-top: var(--m);
+}
+
+.labin label {
+    font-size: var(--xs);
+    color: var(--grey-72);
+}
+
+.labin input {
+    outline: none;
+    border: none;
+    font-size: var(--m);
+}
+
+.modal button {
+    margin-top: var(--m);
+}
+
+/* guide */
+
+/* res */
+.response {
+    position: fixed;
+    top: var(--x);
+    width: 253px;
+    background-color: var(--bg-color);
+    padding: var(--s);
+    border-radius: var(--xxs);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+.response__close {
+    cursor: pointer;
+    width: var(--x);
+    height: var(--x);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0034217;
+    color: #f00342;
+    border-radius: 50%;
+    font-weight: bold;
+    float: right;
+}
+
+.response__msg {
+    margin-top: var(--l);
+}
+
+/* res */
+
+@media screen and (max-width: 1024px) {
+    :root {
+        --xxxx: 3.35rem;
+        --xxx: 2.85rem;
+        --xx: 2.35rem;
+    }
+
+    .welcome__container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .data {
+        min-height: unset;
+    }
+}
+
+@media screen and (max-width: 896px) {
+    :root {
+        --xxxx: 3.25rem;
+        --xxx: 2.75rem;
+        --xx: 2.25rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --xxxx: 3rem;
+        --xxx: 2.5rem;
+        --xx: 2rem;
+        --x: 1.75rem;
+        --l: 1.35rem
+    }
+
+    .welcome__img {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    :root {
+        --xxxx: 2.85rem;
+        --xxx: 2.35rem;
+        --xx: 1.85rem;
+        --x: 1.65rem;
+        --l: 1.25rem
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        background-color: var(--bg-color);
+        z-index: 111;
+    }
+
+    .data__container {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    :root {
+        --xxxx: 2.75rem;
+        --xxx: 2.25rem;
+        --xx: 1.75rem;
+        --x: 1.5rem;
+        --l: 1.15rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    :root {
+        --m: .9rem;
+        --s: .8rem;
+        --xs: .7rem;
+        --xxs: .6rem;
+    }
+}

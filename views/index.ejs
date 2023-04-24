@@ -1,0 +1,177 @@
+<section id="home">
+    <div class="welcome__container grid">
+        <div class="welcome__explain">
+            <h1>Welcome to the People List App</h1>
+            The application is made to display a list of people who are in a housing. Designed to make it easier for us
+            to see addresses and contacts if one day they are needed.
+            <a href="#data" class="button welcome__button">Try</a>
+        </div>
+        <img src="img.jpg" alt="" class="welcome__img">
+    </div>
+</section>
+<section class="guide__section" id="data">
+    <p>
+        You can experiment with managing data such as adding, changing, and even deleting data</p>
+</section>
+<section class="data">
+    <div class="data__button button" onclick="modal(0)">
+        Add Data +
+    </div>
+    <hr>
+    <br>
+    <div class="data__container">
+        <div class="data__card">
+            <div class="data__value">
+                <p>Example 1</p>
+            </div>
+            <div class="data__value x"><span>address</span>
+                <p>Dream Street 1</p>
+            </div>
+            <div class="data__value x"><span>number</span>
+                <p>+111-111-111</p>
+            </div>
+            <div class="data__value x"><span>email</span>
+                <p>example1@gmail.com</p>
+            </div>
+        </div>
+        <div class="data__card">
+            <div class="data__value">
+                <p>Ilham Rahmat Akbar</p>
+            </div>
+            <div class="data__value x"><span>address</span>
+                <p>Jl. Kramat Sentiong Gg. Mesjid</p>
+            </div>
+            <div class="data__value x"><span>number</span>
+                <p>+6281272369357</p>
+            </div>
+            <div class="data__value x"><span>email</span>
+                <p>ilhamrhmtkbr@gmail.com</p>
+            </div>
+        </div>
+        <% if(data.length===0) { %>
+            <div class="data__warning">No Data</div>
+            <% } else { %>
+                <% var i=0 %>
+                    <% data.forEach( item=> { %>
+                        <div class="data__card">
+                            <div class="data__value">
+                                <p>
+                                    <%= item.name %>
+                                </p>
+                            </div>
+                            <div class="data__value x"><span>address</span>
+                                <p>
+                                    <%= item.address %>
+                                </p>
+                            </div>
+                            <div class="data__value x"><span>number</span>
+                                <p>
+                                    <%= item.number %>
+                                </p>
+                            </div>
+                            <div class="data__value x"><span>email</span>
+                                <p>
+                                    <%= item.email %>
+                                </p>
+                            </div>
+                            <div class="data__action">
+                                <div class="data__edit button"
+                                    onclick="modal(1,['<%= item._id.toString() %>', '<%= item.name %>', '<%= item.address %>', '<%= item.number %>', '<%= item.email %>'])">
+                                    Edit
+                                </div>
+                                <form action="/contact?_method=Delete" method="post">
+                                    <input type="hidden" name="name" value="<%= item.name %>">
+                                    <button class="button data__delete" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% } %>
+    </div>
+</section>
+
+<% if(message.length !==0) { %>
+    <div class="response">
+        <div class="response__close" onclick="this.parentElement.remove()">&times;</div>
+        <div class="response__msg">
+            <%= message %>
+        </div>
+    </div>
+    <% } %>
+        <div class="modal">
+            <div class="modal__container">
+                <div class="modal__close" onclick="tutup(0)">&times;</div>
+                <h2>Add Data</h2>
+                <form method="post" action="/contact">
+                    <div class="labin">
+                        <label for="name">name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="labin">
+                        <label for="address">address</label>
+                        <input type="text" name="address" id="address" required>
+                    </div>
+                    <div class="labin">
+                        <label for="number">number</label>
+                        <input type="text" name="number" id="number" required>
+                    </div>
+                    <div class="labin">
+                        <label for="email">email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+
+                    <button class="button">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal">
+            <div class="modal__container">
+                <div class="modal__close" onclick="tutup(1)">&times;</div>
+                <h2>Update Data</h2>
+                <form method="post" action="/contact?_method=PUT">
+                    <input type="hidden" name="_id">
+                    <div class="labin">
+                        <label for="name">name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="labin">
+                        <label for="address">address</label>
+                        <input type="text" name="address" id="address" required>
+                    </div>
+                    <div class="labin">
+                        <label for="number">number</label>
+                        <input type="text" name="number" id="number" required>
+                    </div>
+                    <div class="labin">
+                        <label for="email">email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+
+                    <button class="button">Submit</button>
+                </form>
+            </div>
+        </div>
+        <section class="guide__section" id="about">
+            <p>
+                This app is built using HTML, CSS, JavaScript, Node.js, Express Js, Mongodb Atlas. Created aims to
+                implement what has been learned by the <a href="https://iogm.website">developer</a>.</p>
+        </section>
+
+        <script>
+            const form = document.getElementsByClassName('modal');
+
+            const modal = (i, data) => {
+                form[i].classList.add('active')
+                if (i == 1) {
+                    let inp = form[i].querySelectorAll('input');
+                    for (let k = 0; k < inp.length; k++) {
+                        inp[k].value = data[k]
+                    }
+                }
+            }
+            const tutup = (i) => {
+                form[i].classList.remove('active')
+            }
+
+        </script>
